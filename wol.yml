@@ -1,5 +1,6 @@
 ---
 - name: Send WOL
+  gather_facts: False
   hosts: all
 
 
