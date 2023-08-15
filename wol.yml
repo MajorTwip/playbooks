@@ -1,5 +1,7 @@
 ---
 - name: Send WOL
+  hosts: all
+
 
   tasks:
   - name: Send WOL to 66
