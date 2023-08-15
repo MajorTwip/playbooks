@@ -1,0 +1,13 @@
+---
+- name: Shutdown Host
+  hosts: all
+ 
+  tasks:
+ 
+  - name: Shutdown ESXi
+    community.vmware.vmware_host:
+      esxi_hostname: '{{ esxi_hostname }}'
+      esxi_username: '{{ ANSIBLE_NET_USERNAME }}'
+      esxi_password: '{{ ANSIBLE_NET_PASSWORD }}'
+      state: present
+    delegate_to: kubeworker
