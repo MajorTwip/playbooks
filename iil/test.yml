@@ -1,0 +1,9 @@
+---
+- name: Send WOL
+
+  tasks:
+  - name: Send WOL to 66
+    community.general.wakeonlan:
+      mac: 00:00:5E:00:53:66
+      port: 9
+    delegate_to: localhost
