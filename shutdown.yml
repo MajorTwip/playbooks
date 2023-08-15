@@ -4,6 +4,11 @@
   hosts: all
  
   tasks:
+
+  - name: Display all variables/facts known for a host
+    ansible.builtin.debug:
+      var: hostvars[inventory_hostname]
+      verbosity: 4
  
   - name: Shutdown ESXi
     community.vmware.vmware_host:
