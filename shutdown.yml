@@ -12,7 +12,8 @@
 
   - name: Display all variables/facts known for a host
     ansible.builtin.debug:
-      msg: "{{ansible_env}}"
+      var: ansible_env
+      verbosity: 4
    
   - name: Shutdown ESXi
     community.vmware.vmware_host:
