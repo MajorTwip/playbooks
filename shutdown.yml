@@ -4,16 +4,6 @@
   hosts: all
  
   tasks:
-
-  - name: Display all variables/facts known for a host
-    ansible.builtin.debug:
-      var: hostvars[inventory_hostname]
-      verbosity: 4
-
-  - name: Display all variables/facts known for a host
-    ansible.builtin.debug:
-      var: env
-      verbosity: 4
    
   - name: Shutdown ESXi
     community.vmware.vmware_host:
@@ -22,3 +12,4 @@
       esxi_password: '{{ lookup(env, "ANSIBLE_NET_PASSWORD" }}'
       state: present
     delegate_to: kubeworker
+    when: esxi_hostname is defined
