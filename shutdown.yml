@@ -1,5 +1,6 @@
 ---
 - name: Shutdown Host
+  gather_facts: False
   hosts: all
  
   tasks:
