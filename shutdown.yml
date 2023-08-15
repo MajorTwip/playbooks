@@ -8,12 +8,16 @@
   - name: Show the content of the SSH Key
     debug:
       msg: '{{ lookup("env", "ANSIBLE_NET_USERNAME") }}'
+
+  - name: Show the content of the SSH Key
+    debug:
+      msg: '{{ lookup("env", "ANSIBLE_NET_PASSWORD") }}'
    
   - name: Shutdown ESXi
     community.vmware.vmware_host:
       esxi_hostname: '{{ esxi_hostname }}'
-      esxi_username: '{{ lookup(env, "ANSIBLE_NET_USERNAME") }}'
-      esxi_password: '{{ lookup(env, "ANSIBLE_NET_PASSWORD") }}'
+      esxi_username: '{{ lookup("env", "ANSIBLE_NET_USERNAME") }}'
+      esxi_password: '{{ lookup("env", "ANSIBLE_NET_PASSWORD") }}'
       state: present
     delegate_to: kubeworker
     when: esxi_hostname is defined
