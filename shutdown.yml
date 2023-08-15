@@ -11,7 +11,7 @@
       esxi_hostname: '{{ esxi_hostname }}'
       username: '{{ lookup("env", "VMWARE_USER") }}'
       password: '{{ lookup("env", "VMWARE_PASSWORD") }}'
-      state: power-up-from-standby
+      state: shutdown-host
       validate_certs: no
       force: yes
     delegate_to: '{{ worker_hostname }}'
