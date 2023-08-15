@@ -12,13 +12,13 @@
 
   - name: Display all variables/facts known for a host
     ansible.builtin.debug:
-      var: ansible_env
+      var: env
       verbosity: 4
    
   - name: Shutdown ESXi
     community.vmware.vmware_host:
       esxi_hostname: '{{ esxi_hostname }}'
-      esxi_username: '{{ ansible_env.ANSIBLE_NET_USERNAME }}'
-      esxi_password: '{{ ansible_env.ANSIBLE_NET_PASSWORD }}'
+      esxi_username: '{{ env["ANSIBLE_NET_USERNAME"] }}'
+      esxi_password: '{{ env["ANSIBLE_NET_PASSWORD"] }}'
       state: present
     delegate_to: kubeworker
