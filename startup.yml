@@ -8,8 +8,9 @@
     community.general.ilo_redfish_config:
       category: Manager
       command: SetWINSReg
-      baseuri: {{ilo_hostname}}
+      baseuri: '{{ilo_hostname}}'
       username: Administrator  
       password: Windows2000
       attribute_name: WINSRegistration
     delegate_to: '{{ worker_hostname }}'
+    when: ilo_hostname is defined
