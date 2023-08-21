@@ -5,12 +5,11 @@
  
   tasks:
   - name: Start via iLO
-    community.general.ilo_redfish_config:
-      category: Manager
+    community.general.redfish_config:
+      category: System
       command: PowerOn
       baseuri: '{{ilo_hostname}}'
       username: '{{ lookup("env", "VMWARE_USER") }}'
       password: '{{ lookup("env", "VMWARE_PASSWORD") }}'
-      attribute_name: noneed
     delegate_to: '{{ worker_hostname }}'
     when: ilo_hostname is defined
