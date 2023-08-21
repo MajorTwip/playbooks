@@ -6,7 +6,7 @@
   tasks:
   - name: Start via iLO
     community.general.redfish_config:
-      category: System
+      category: Systems
       command: PowerOn
       baseuri: '{{ilo_hostname}}'
       username: '{{ lookup("env", "VMWARE_USER") }}'
