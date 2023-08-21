@@ -16,3 +16,13 @@
       force: yes
     delegate_to: '{{ worker_hostname }}'
     when: esxi_hostname is defined
+
+  - name: Shutdown via iLO
+    community.general.redfish_command:
+      category: Systems
+      command: PowerGracefulShutdown
+      baseuri: '{{ilo_hostname}}'
+      username: '{{ lookup("env", "VMWARE_USER") }}'
+      password: '{{ lookup("env", "VMWARE_PASSWORD") }}'
+    delegate_to: '{{ worker_hostname }}'
+    when: ilo_hostname is defined
