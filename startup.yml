@@ -5,7 +5,7 @@
  
   tasks:
   - name: Start via iLO
-    community.general.redfish_config:
+    community.general.redfish_command:
       category: Systems
       command: PowerOn
       baseuri: '{{ilo_hostname}}'
