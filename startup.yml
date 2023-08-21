@@ -4,13 +4,12 @@
   hosts: all
  
   tasks:
-  - name: Disable WINS Registration
+  - name: Start via iLO
     community.general.ilo_redfish_config:
       category: Manager
-      command: SetWINSReg
+      command: PowerOn
       baseuri: '{{ilo_hostname}}'
-      username: Administrator  
-      password: Windows2000
-      attribute_name: WINSRegistration
+      username: '{{ lookup("env", "VMWARE_USER") }}'
+      password: '{{ lookup("env", "VMWARE_PASSWORD") }}'
     delegate_to: '{{ worker_hostname }}'
     when: ilo_hostname is defined
