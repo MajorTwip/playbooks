@@ -1,0 +1,15 @@
+---
+- name: Start Host over iLO
+  gather_facts: False
+  hosts: all
+ 
+  tasks:
+  - name: Disable WINS Registration
+    community.general.ilo_redfish_config:
+      category: Manager
+      command: SetWINSReg
+      baseuri: {{ilo_hostname}}
+      username: Administrator  
+      password: Windows2000
+      attribute_name: WINSRegistration
+    delegate_to: '{{ worker_hostname }}'
