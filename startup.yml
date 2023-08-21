@@ -9,7 +9,7 @@
       category: Systems
       command: PowerOn
       baseuri: '{{ilo_hostname}}'
-      username: '{{ lookup("env", "VMWARE_USER") }}'
-      password: '{{ lookup("env", "VMWARE_PASSWORD") }}'
+      username: '{{ilo_username}}'
+      password: '{{ilo_password}}'
     delegate_to: '{{ worker_hostname }}'
     when: ilo_hostname is defined
