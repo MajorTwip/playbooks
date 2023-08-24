@@ -38,7 +38,6 @@
       params:
         node: '*'
         skip-lif-migration-before-shutdown: true
-        inhibit-takeover: true
       verb: 'POST'
     delegate_to: '{{ worker_hostname }}'
     when: netapp_hostname is defined
