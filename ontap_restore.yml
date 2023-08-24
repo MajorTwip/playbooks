@@ -17,3 +17,5 @@
       password: "{{ netapp_password }}"
       https: true
       validate_certs: false
+    delegate_to: '{{ worker_hostname }}'
+
