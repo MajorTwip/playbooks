@@ -1,0 +1,19 @@
+---
+- name: Restore Snapshot
+  gather_facts: False
+  hosts: all
+ 
+  tasks:
+
+  - name: Snapshot restore volume
+    netapp.ontap.na_ontap_volume:
+      name: "{{ netapp_vol_name }}"
+      vserver: "{{ netapp_svm_name }}"
+      snapshot_restore: "{{ snapshot_name }}"
+      force_restore: true
+      preserve_lun_ids: true
+      hostname: "{{ netapp_hostname }}"
+      username: "{{ netapp_username }}"
+      password: "{{ netapp_password }}"
+      https: true
+      validate_certs: false
