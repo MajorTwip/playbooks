@@ -45,4 +45,5 @@
       password: "{{ netapp_password }}"
       command: 'version'
       verb: 'GET'
+    delegate_to: '{{ worker_hostname }}'
     when: netapp_hostname is defined
