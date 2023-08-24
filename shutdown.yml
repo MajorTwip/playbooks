@@ -35,7 +35,10 @@
       https: true
       validate_certs: false
       command: 'system/node/power/off'
-      body: {'node':'netapp05-02'}
+      body: 
+        node : "{{item}}"
+        skip-lif-migration-before-shutdown : true
       verb: 'POST'
+    loop: "{{ netapp_nodes }}"
     delegate_to: '{{ worker_hostname }}'
     when: netapp_hostname is defined
