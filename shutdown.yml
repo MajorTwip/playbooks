@@ -36,9 +36,8 @@
       validate_certs: false
       command: 'system/node/power/off'
       body: 
-        node : "{{item}}"
+        node : netapp05-02
       verb: 'POST'
-    loop: "{{ netapp_nodes }}"
     delegate_to: '{{ worker_hostname }}'
     when: netapp_hostname is defined
     ignore_errors: true
