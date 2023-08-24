@@ -32,6 +32,8 @@
       hostname: "{{ netapp_hostname }}"
       username: "{{ netapp_username }}"
       password: "{{ netapp_password }}"
+      https: true
+      validate_certs: false
       command: ['version']
     delegate_to: '{{ worker_hostname }}'
     when: netapp_hostname is defined
