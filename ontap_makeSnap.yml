@@ -9,6 +9,7 @@
       hostname: '{{ netapp_hostname }}'
       username: '{{ netapp_username }}'
       password: '{{ netapp_password }}'
+      https: true
     delegate_to: '{{ worker_hostname }}'
     register: ontap_info
   - debug:
