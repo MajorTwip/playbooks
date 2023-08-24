@@ -26,3 +26,12 @@
       password: '{{ilo_password}}'
     delegate_to: '{{ worker_hostname }}'
     when: ilo_hostname is defined
+
+  - name: Shutdown NetApp
+    netapp.ontap.na_ontap_command:
+      hostname: "{{ netapp_hostname }}"
+      username: "{{ netapp_username }}"
+      password: "{{ netapp_password }}"
+      command: ['version']
+    delegate_to: '{{ worker_hostname }}'
+    when: netapp_hostname is defined
