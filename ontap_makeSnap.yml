@@ -11,9 +11,9 @@
     netapp.ontap.na_ontap_snapshot:
       state: present
       snapshot: "{{ snapshot_name }}"
-      volume: "{{ vol_name }}"
-      comment: "i am a comment"
-      vserver: "svm11"
+      volume: "{{ netapp_vol_name }}"
+      comment: "Triggered over Ansible"
+      vserver: "{{ netapp_svm_name }}"
       username: "{{ netapp_username }}"
       password: "{{ netapp_password }}"
       hostname: "{{ netapp_hostname }}"
