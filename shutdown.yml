@@ -43,7 +43,9 @@
       hostname: "{{ netapp_hostname }}"
       username: "{{ netapp_username }}"
       password: "{{ netapp_password }}"
-      command: 'version'
-      verb: 'GET'
+      https: true
+      validate_certs: false
+      command: 'system/node/power/off'
+      verb: 'POST'
     delegate_to: '{{ worker_hostname }}'
     when: netapp_hostname is defined
