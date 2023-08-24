@@ -37,7 +37,6 @@
       command: 'system/node/power/off'
       body: 
         node : "{{item}}"
-        skip-lif-migration-before-shutdown : true
       verb: 'POST'
     loop: "{{ netapp_nodes }}"
     delegate_to: '{{ worker_hostname }}'
