@@ -35,9 +35,7 @@
       https: true
       validate_certs: false
       command: 'system/node/power/off'
-      params:
-        node: '*'
-        skip-lif-migration-before-shutdown: true
+      params: {'node':'*'}
       verb: 'POST'
     delegate_to: '{{ worker_hostname }}'
     when: netapp_hostname is defined
