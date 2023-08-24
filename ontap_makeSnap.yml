@@ -1,0 +1,14 @@
+---
+- name: Create Snapshot
+  gather_facts: False
+  hosts: all
+ 
+  tasks:
+  - name: Get NetApp info as Cluster Admin (Password Authentication)
+    netapp.ontap.na_ontap_info:
+      hostname: "10.225.255.90"
+      username: "admin"
+      password: "Netapp11"
+    register: ontap_info
+  - debug:
+      msg: "{{ ontap_info.ontap_info }}"
