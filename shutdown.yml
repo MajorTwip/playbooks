@@ -27,17 +27,6 @@
     delegate_to: '{{ worker_hostname }}'
     when: ilo_hostname is defined
 
-  - name: Shutdown NetApp
-    netapp.ontap.na_ontap_command:
-      hostname: "{{ netapp_hostname }}"
-      username: "{{ netapp_username }}"
-      password: "{{ netapp_password }}"
-      https: true
-      validate_certs: false
-      command: ['cluster','show']
-    delegate_to: '{{ worker_hostname }}'
-    when: netapp_hostname is defined
-
   - name: run ontap rest cli command
     netapp.ontap.na_ontap_rest_cli:
       hostname: "{{ netapp_hostname }}"
@@ -46,6 +35,11 @@
       https: true
       validate_certs: false
       command: 'system/node/power/off'
+      params:
+        node: *
+        skip-lif-migration-before-shutdown: true
+        ignore-quorum-warnings: true 
+        inhibit-takeover: true
       verb: 'POST'
     delegate_to: '{{ worker_hostname }}'
     when: netapp_hostname is defined
